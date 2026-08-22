@@ -1,0 +1,70 @@
+
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* JobPilot custom colors */
+  --color-jp-base: #14181F;
+  --color-jp-surface: #1C222C;
+  --color-jp-surface-light: #242B37;
+  --color-jp-border: #2E3542;
+  --color-jp-paper: #EDEAE1;
+  --color-jp-paper-dim: #E2DED2;
+  --color-jp-amber: #F2A93B;
+  --color-jp-cyan: #3FC1C9;
+  --color-jp-rose: #E0567C;
+  --color-jp-text-dim: #8A93A3;
+  --color-jp-text-dim2: #5C6577;
+
+  /* JobPilot animations */
+  --animate-snap: snap 0.4s cubic-bezier(.36,1.5,.64,1);
+  --animate-slidein: slidein 0.28s ease-out;
+  --animate-slidedown: slidedown 0.22s ease-out;
+  --animate-fadeup: fadeup 0.3s ease-out both;
+  --animate-spin-slow: spin 1.1s linear infinite;
+  --animate-popcheck: popcheck 0.32s ease-out;
+  --animate-modalin: modalin 0.24s ease-out;
+}
+
+:root {
+  --background: #14181F;
+  --foreground: #EDEAE1;
+}
+
+@keyframes snap {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.06) translateY(-3px); }
+  60% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+@keyframes slidein {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slidedown {
+  from { transform: translateY(-8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeup {
+  from { transform: translateY(6px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes popcheck {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes modalin {
+  from { transform: scale(0.96) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}

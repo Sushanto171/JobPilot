@@ -1,0 +1,10 @@
+"use client";
+
+import { Card } from "@/components/ui/card";
+import { SEED_RESUMES } from "@/lib/mock-data";
+import { FileText, Upload } from "lucide-react";
+
+export default function ResumesPage() {
+  const upload = () => document.createElement("input");
+  return <div className="max-w-4xl px-6 py-6"><div className="mb-4 flex items-center justify-between"><span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-jp-text-dim"><FileText size={12} /> Resume versions</span><button type="button" onClick={upload} className="flex items-center gap-1.5 rounded-md border border-jp-border px-3 py-1.5 text-xs text-jp-paper"><Upload size={12} /> Upload base resume</button></div><div className="space-y-3">{SEED_RESUMES.map((resume, index) => <Card key={resume.id} className="animate-fadeup flex items-center justify-between" style={{ animationDelay: `${index * 60}ms` }}><div className="flex min-w-0 items-center gap-3"><div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded ${resume.tag === "MASTER" ? "bg-jp-surface-light" : "bg-jp-cyan/10"}`}><FileText size={15} className={resume.tag === "MASTER" ? "text-jp-text-dim" : "text-jp-cyan"} /></div><div className="min-w-0"><div className="flex items-center gap-2"><span className="truncate text-sm font-semibold text-jp-paper">{resume.label}</span><span className="rounded bg-jp-surface-light px-1.5 py-0.5 font-mono text-[9px] text-jp-amber">{resume.tag}</span></div><div className="mt-0.5 flex flex-wrap items-center gap-2">{resume.linked && <span className="text-xs text-jp-text-dim2">→ {resume.linked}</span>}{resume.keywords.map((keyword) => <span key={keyword} className="rounded bg-jp-surface-light px-1.5 py-0.5 text-xs text-jp-text-dim">{keyword}</span>)}</div></div></div><div className="flex shrink-0 items-center gap-3"><span className="hidden font-mono text-xs text-jp-text-dim2 sm:block">{resume.updated}</span><button type="button" className="rounded-md border border-jp-border px-2.5 py-1.5 text-xs text-jp-cyan">View</button></div></Card>)}</div></div>;
+}
