@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+      network: host
+    container_name: jobpilot-backend
+    ports:
+        - "3000:3000"
+    command: "pnpm run dev"
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      network: host
+    container_name: jobpilot-frontend
+    ports:
+        - "3001:3000"
+    command: "pnpm run dev"
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules 
