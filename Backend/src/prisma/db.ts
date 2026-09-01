@@ -8,4 +8,3 @@ export const db = postgres<Contract>({
   url: process.env["DATABASE_URL"]!,
 });
 
-export const prisma = db.orm.public;

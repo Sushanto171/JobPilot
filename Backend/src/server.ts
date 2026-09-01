@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "dotenv/config";
 import { app } from "./app";
 import { db } from "./prisma/db";
@@ -90,5 +91,21 @@ process.on("uncaughtException", (error) => {
   console.error("Uncaught exception:", error);
   shutdown(1);
 });
+=======
+import { app } from "./app";
+
+const port = Number(process.env.PORT) || 3000;
+const host = process.env.HOST || "0.0.0.0";
+
+const startServer = async () => {
+  app.listen({ port, host }, (err, address) => {
+    console.log({ address });
+    if (err) {
+      console.log("Error: ", err);
+      process.exit(1);
+    }
+  });
+};
+>>>>>>> origin/main
 
 startServer();

@@ -1,4 +1,7 @@
 allowBuilds:
   esbuild: false
+<<<<<<< HEAD
   msgpackr-extract: false
   workerd: false
+=======
+>>>>>>> origin/main
