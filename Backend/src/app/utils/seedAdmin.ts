@@ -1,10 +1,9 @@
 // seedAdmin.ts
 import "dotenv/config"
 
-import {  prisma } from "@/prisma/db";
-
 import {ContractRole} from "../types"
 import { Role } from '../constants/role'
+import { fastify } from "@/app";
 
 export const seedAdmin = async () => {
   const payload ={
@@ -14,14 +13,14 @@ export const seedAdmin = async () => {
     role: (process.env.ADMIN_ROLE || Role.Admin) as ContractRole,
   }
 
-  const existingAdmin = await prisma.User.where({email: payload.email}).first()
+  const existingAdmin = await fastify.prisma.User.where({email: payload.email}).first()
 
   if (existingAdmin) {
     console.log('Admin already exists, skipping seed.')
     return
   }
 
-  const admin = await prisma.User.create(payload)
+  const admin = await fastify.prisma.User.create(payload)
 
   console.log('Admin user created:', admin)
 }

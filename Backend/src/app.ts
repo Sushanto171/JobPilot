@@ -1,7 +1,7 @@
-import fastify from "fastify";
+import Fastify from "fastify";
 import { sendReply } from "./app/utils/SendReply";
-export const app = fastify({ logger: true });
+export const fastify = Fastify({ logger: true });
 
-app.get("/", (request, reply) => {
+fastify.get("/", (request, reply) => {
   sendReply(reply, 200, true, "Server is running..");
 });

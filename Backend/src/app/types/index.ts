@@ -1,6 +1,6 @@
-import { prisma } from "@/prisma/db";
+import { fastify } from "@/app";
 
 export type UserRecord = NonNullable<
-  Awaited<ReturnType<typeof prisma.User.first>>
+  Awaited<ReturnType<typeof fastify.prisma.User.first>>
 >;
 export type ContractRole = UserRecord["role"];

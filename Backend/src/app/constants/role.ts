@@ -1,6 +1,4 @@
 
-import {ContractRole} from "../types"
-
 export const Role = {
   User: 'USER',
   Admin: 'ADMIN',

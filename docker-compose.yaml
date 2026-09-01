@@ -1,5 +1,4 @@
 services:
-<<<<<<< HEAD
   database:
     image: postgres:18
     container_name: jobpilot-database
@@ -21,8 +20,6 @@ services:
     networks:
       - jobpilot-network
 
-=======
->>>>>>> origin/main
   backend:
     build:
       context: ./Backend
@@ -31,7 +28,6 @@ services:
     container_name: jobpilot-backend
     ports:
         - "3000:3000"
-<<<<<<< HEAD
     command: sh -c "pnpm run db:sync && pnpm run dev"
     volumes:
       - ./Backend:/app
@@ -46,12 +42,6 @@ services:
         condition: service_healthy
     networks:
       - jobpilot-network
-=======
-    command: "pnpm run dev"
-    volumes:
-      - ./Backend:/app
-      - /app/node_modules
->>>>>>> origin/main
 
 
   frontend:
@@ -66,7 +56,6 @@ services:
     volumes:
       - ./Frontend:/app
       - /app/node_modules 
-<<<<<<< HEAD
     networks:
       - jobpilot-network
     depends_on:
@@ -91,5 +80,3 @@ volumes:
 networks:
   jobpilot-network:
     driver: bridge
-=======
->>>>>>> origin/main
