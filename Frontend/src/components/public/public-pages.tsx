@@ -1,0 +1,12 @@
+export { AboutPage } from "./AboutPage";
+export { BlogPage } from "./BlogPage";
+export { BlogPostPage } from "./BlogPostPage";
+export { ChangelogPage } from "./ChangelogPage";
+export { ContactPage } from "./ContactPage";
+export { FAQPage } from "./FAQPage";
+export { FeaturesPage } from "./FeaturesPage";
+export { HomePage } from "./HomePage";
+export { PrivacyPage, TermsPage } from "./LegalPages";
+export { LoginPage } from "./LoginPage";
+export { PricingPage } from "./PricingPage";
+export { SignupPage } from "./SignupPage";

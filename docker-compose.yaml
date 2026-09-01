@@ -1,0 +1,82 @@
+services:
+  database:
+    image: postgres:18
+    container_name: jobpilot-database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: jobpilot 
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    volumes:
+      - database_data:/var/lib/postgresql
+    networks:
+      - jobpilot-network
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+      network: host
+    container_name: jobpilot-backend
+    ports:
+        - "3000:3000"
+    command: sh -c "pnpm run db:sync && pnpm run dev"
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+    env_file:
+      - ./Backend/.env
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - jobpilot-network
+
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      network: host
+    container_name: jobpilot-frontend
+    ports:
+        - "3001:3000"
+    command: "pnpm run dev"
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules 
+    networks:
+      - jobpilot-network
+    depends_on:
+      - backend
+  
+  adminer:
+    image: adminer
+    container_name: jobpilot-adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - jobpilot-network
+    depends_on:
+      - database
+
+
+
+volumes:
+  database_data:
+
+networks:
+  jobpilot-network:
+    driver: bridge

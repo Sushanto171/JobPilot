@@ -1,0 +1,21 @@
+// use prisma-next
+
+
+enum Role {
+  @@type("pg/text@1")
+  USER
+  ADMIN
+}
+
+model User {
+  id        String      @id @default(uuid())
+  email     String   @unique
+  username  String? @unique
+  name      String?
+  role      Role      @default(USER)
+  createdAt TimestamptzString @default(now())
+  updatedAt temporal.updatedAtString()
+}
+
+
+
