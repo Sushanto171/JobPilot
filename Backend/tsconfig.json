@@ -15,13 +15,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-<<<<<<< HEAD
     "resolveJsonModule": true,
-    "types": [
-      "node"
-    ],
-=======
->>>>>>> origin/main
   },
   "include": ["src"],
   "exclude": ["node_modules","dist"]
