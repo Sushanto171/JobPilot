@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { ZodSchema } from "zod";
-import { AppError } from "../utils/AppError";
+import { HttpStatus } from "../constants/httpStatus";
+import { sendReply } from "../utils/SendReply";
 
 export const validateBodyHook =
   (schema: ZodSchema) =>
@@ -8,7 +9,16 @@ export const validateBodyHook =
     const body = request.body;
     const result = schema.safeParse(body);
     if (!result.success) {
-      console.log("Validation error:", result.error.format());
-      throw new AppError("Invalid request body", 400);
+      sendReply(
+        reply,
+        HttpStatus.UNPROCESSABLE_ENTITY,
+        false,
+        "Validation failed",
+        result.error?.issues?.map((e) => ({
+          field: e.path.join("."),
+          message: e.message,
+        })),
+      );
+      return;
     }
   };
