@@ -1,5 +1,5 @@
 import { fastify } from "@/app";
-import { CreateUserInput } from "@/app/types";
+import { CreateUserInput } from "./user.validation";
 
 export class UserService {
   async getUsers() {

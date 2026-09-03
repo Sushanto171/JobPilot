@@ -1,9 +1,12 @@
+import formbody from "@fastify/formbody";
 import Fastify from "fastify";
 import { catchAsync } from "./app/helpers/catchAsync";
 import { globalErrorHandler } from "./app/helpers/globalError";
 import { routes } from "./app/routes";
 import { sendReply } from "./app/utils/SendReply";
-export const fastify = Fastify({ logger: true });
+export const fastify = Fastify({ logger: false });
+
+fastify.register(formbody);
 
 fastify.get("/", (request, reply) => {
   sendReply(reply, 200, true, "Server is running..");

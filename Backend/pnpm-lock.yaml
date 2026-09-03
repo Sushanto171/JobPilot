@@ -207,6 +207,9 @@ importers:
 
   .:
     dependencies:
+      '@fastify/formbody':
+        specifier: ^9.0.0
+        version: 9.0.0
       '@prisma/orm-postgres':
         specifier: 8.0.0-rc.8
         version: 8.0.0-rc.8(@prisma/cli-engine@0.2.3(magicast@0.5.4))(magicast@0.5.4)(typanion@3.14.0)(typescript@7.0.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0))
@@ -222,6 +225,9 @@ importers:
       fastify-plugin:
         specifier: ^6.0.0
         version: 6.0.0
+      zod:
+        specifier: ^4.5.4
+        version: 4.5.4
     devDependencies:
       '@prisma/cli-engine':
         specifier: 0.2.3
@@ -686,6 +692,9 @@ packages:
 
   '@fastify/fast-json-stringify-compiler@5.1.0':
     resolution: {integrity: sha512-PxcYtKLbQ8Z+yApiqjK8FwxIwvEj38k2OiLc17u8dkJSlmfi2wHHPaSnaoqBPQqtvF8YVsDgDpP2snDCfFrpfw==}
+
+  '@fastify/formbody@9.0.0':
+    resolution: {integrity: sha512-T/af26CSrUARBCvsEmv+DJLPfZlrRKESzqironxP1j7qzuLyKcoZtj6MuTGShuKx1THXugoie2oFbUJxXfGFzA==}
 
   '@fastify/forwarded@3.0.2':
     resolution: {integrity: sha512-NE8HgKLgYejV9lDpqkEFaDKMLYelJBVfHekhB0UKvX0ghagXRJqg68feg8er1NPXxG4N9i6vPxzt8E+3wHfcmA==}
@@ -3178,6 +3187,9 @@ packages:
   zeptomatch@2.1.0:
     resolution: {integrity: sha512-KiGErG2J0G82LSpniV0CtIzjlJ10E04j02VOudJsPyPwNZgGnRKQy7I1R7GMyg/QswnE4l7ohSGrQbQbjXPPDA==}
 
+  zod@4.5.4:
+    resolution: {integrity: sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA==}
+
 snapshots:
 
   '@alcalzone/ansi-tokenize@0.2.5':
@@ -3648,6 +3660,11 @@ snapshots:
   '@fastify/fast-json-stringify-compiler@5.1.0':
     dependencies:
       fast-json-stringify: 7.0.1
+
+  '@fastify/formbody@9.0.0':
+    dependencies:
+      fast-querystring: 1.1.2
+      fastify-plugin: 6.0.0
 
   '@fastify/forwarded@3.0.2': {}
 
@@ -6087,3 +6104,5 @@ snapshots:
     dependencies:
       grammex: 3.1.13
       graphmatch: 1.1.1
+
+  zod@4.5.4: {}

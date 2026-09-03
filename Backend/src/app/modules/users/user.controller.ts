@@ -1,7 +1,7 @@
 import { catchAsync } from "@/app/helpers/catchAsync";
-import { CreateUserInput } from "@/app/types";
 import { sendReply } from "@/app/utils/SendReply";
 import { UserService } from "./user.service";
+import { CreateUserInput } from "./user.validation";
 const userService = new UserService();
 export class UserController {
   getUsers = catchAsync(async (request, reply) => {
