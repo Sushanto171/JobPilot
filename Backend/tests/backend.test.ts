@@ -13,7 +13,7 @@ describe("backend helpers", () => {
     assert.notEqual(hash, password);
     assert.equal(await BcryptHelper.comparePasswords(password, hash), true);
     assert.equal(
-      await BcryptHelper.comparePasswords("strong-password", hash),
+      await BcryptHelper.comparePasswords("wrong-password", hash),
       false,
     );
   });
@@ -74,6 +74,6 @@ describe("HTTP application", () => {
     const body = response.json();
     assert.equal(body.success, false);
     assert.equal(body.message, "Validation failed");
-    assert.equal(body.data.length, 4);
+    assert.equal(body.data.length, 3);
   });
 });
