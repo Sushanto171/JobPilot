@@ -1,3 +1,4 @@
+import cookie from "@fastify/cookie";
 import formbody from "@fastify/formbody";
 import Fastify from "fastify";
 import { catchAsync } from "./app/helpers/catchAsync";
@@ -7,6 +8,7 @@ import { sendReply } from "./app/utils/SendReply";
 export const fastify = Fastify({ logger: false });
 
 fastify.register(formbody);
+fastify.register(cookie);
 
 fastify.get("/", (request, reply) => {
   sendReply(reply, 200, true, "Server is running..");

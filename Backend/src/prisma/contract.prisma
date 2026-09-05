@@ -8,14 +8,35 @@ enum Role {
 }
 
 model User {
-  id        String                      @id @default(uuid())
-  email     String                      @unique
-  username  String?                     @unique
-  name      String?
-  role      Role                        @default(USER)
-  password  String
-  createdAt TimestamptzString           @default(now())
-  updatedAt temporal.updatedAtString()
+  id                String                      @id @default(uuid())
+  email             String                      @unique
+  username          String?                     @unique
+  name              String?
+  role              Role                        @default(USER)
+  password          String
+  emailVerified     Boolean                     @default(false)
+  twoFactorEnabled  Boolean                     @default(false)
+  twoFactorSecret   String?
+  createdAt         TimestamptzString           @default(now())
+  updatedAt         temporal.updatedAtString()
+}
+
+model RefreshToken {
+  id        String            @id @default(uuid())
+  userId    String
+  tokenHash String            @unique
+  expiresAt TimestamptzString
+  revokedAt TimestamptzString?
+  createdAt TimestamptzString @default(now())
+}
+
+model EmailVerificationToken {
+  id        String            @id @default(uuid())
+  userId    String
+  tokenHash String            @unique
+  expiresAt TimestamptzString
+  usedAt    TimestamptzString?
+  createdAt TimestamptzString @default(now())
 }
 
 
