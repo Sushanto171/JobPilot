@@ -26,7 +26,7 @@ export const createAccessToken = async (userId: string, role: string) =>
 export const verifyAccessToken = async (token: string) => {
   try {
     const { payload } = await jwtVerify(token, jwtSecret);
-    if (!payload.sub) throw new Error("Missing token subject");
+    if (!payload.sub) throw new AppError("Missing token subject");
     return { userId: payload.sub };
   } catch {
     throw new AppError("Authentication required", 401);

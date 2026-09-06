@@ -45,7 +45,9 @@ export class UserService {
     return user;
   }
 
-  generateUniqueUsername = async (fullname: string): Promise<string> => {
+  private generateUniqueUsername = async (
+    fullname: string,
+  ): Promise<string> => {
     const sanitizedFullname = fullname
       .toLowerCase()
       .replace(/[^a-z0-9]/g, "")

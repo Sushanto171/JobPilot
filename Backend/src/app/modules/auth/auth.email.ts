@@ -1,3 +1,4 @@
+import { AppError } from "@/app/utils/AppError";
 import nodemailer from "nodemailer";
 
 const getTransporter = () => {
@@ -28,7 +29,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   }
 
   const from = process.env.SMTP_FROM || process.env.SMTP_USER;
-  if (!from) throw new Error("SMTP_FROM or SMTP_USER must be configured");
+  if (!from) throw new AppError("SMTP_FROM or SMTP_USER must be configured");
   await transporter.sendMail({
     from,
     to: email,
